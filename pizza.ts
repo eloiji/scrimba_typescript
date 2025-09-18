@@ -54,6 +54,20 @@ function completeOrder(orderId: number) {
   return order;
 }
 
+export function getPizzaDetail(identifier: string | number) {
+  /**
+   * Challenge: write the code to check if the parameter is a string
+   * or a number, and use the menu.find() method accordingly
+   */
+  if (typeof identifier === "string") {
+    return menu.find((pizza) => pizza.name.toLocaleLowerCase().trim() === identifier.toLocaleLowerCase().trim());
+  } else if (typeof identifier === "number") {
+    return menu.find((pizza) => pizza.id === identifier);
+  } else {
+    throw new Error("Invalid identifier");
+  }
+}
+
 addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 });
 addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 });
 addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 });
