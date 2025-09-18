@@ -54,7 +54,7 @@ function completeOrder(orderId: number) {
   return order;
 }
 
-export function getPizzaDetail(identifier: string | number) {
+export function getPizzaDetail(identifier: string | number): Pizza | undefined {
   /**
    * Challenge: write the code to check if the parameter is a string
    * or a number, and use the menu.find() method accordingly
