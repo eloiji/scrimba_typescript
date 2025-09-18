@@ -21,7 +21,7 @@ const menu: Pizza[] = [
   { id: nextOrderId++, name: "Veggie", price: 9 },
 ];
 
-function addNewPizza(pizzaObj: Pizza): void {
+function addNewPizza(pizzaObj: Omit<Pizza, "id">): void {
   menu.push({...pizzaObj, id: nextOrderId++});
 }
 
