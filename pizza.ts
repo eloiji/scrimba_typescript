@@ -22,11 +22,11 @@ let nextOrderId: number = 1;
 
 const orderQueue: OrderQueue[] = [];
 
-function addNewPizza(pizzaObj: Pizza) {
+function addNewPizza(pizzaObj: Pizza): void {
   menu.push(pizzaObj);
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string) : OrderQueue | undefined {
   const selectedPizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
   if (!selectedPizza) {
     throw new Error("Pizza not found");
@@ -45,7 +45,7 @@ function placeOrder(pizzaName: string) {
   return newOrder;
 }
 
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number) : OrderQueue | undefined{
   const order = orderQueue.find((order) => order.id === orderId);
   if (!order) {
     throw new Error("Order not found");
@@ -54,11 +54,7 @@ function completeOrder(orderId: number) {
   return order;
 }
 
-export function getPizzaDetail(identifier: string | number) {
-  /**
-   * Challenge: write the code to check if the parameter is a string
-   * or a number, and use the menu.find() method accordingly
-   */
+export function getPizzaDetail(identifier: string | number): Pizza | undefined {
   if (typeof identifier === "string") {
     return menu.find((pizza) => pizza.name.toLocaleLowerCase().trim() === identifier.toLocaleLowerCase().trim());
   } else if (typeof identifier === "number") {
